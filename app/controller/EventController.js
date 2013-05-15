@@ -27,14 +27,9 @@ Ext.define("Kctus.controller.EventController", {
         this.key    = queryString.key;
         this.socket = undefined;
         
-        console.log(this.key);
-        
         if(this.key !== undefined){
             this.socket = io.connect(serverio);
-            socket      = this.socket;
-            this.socket.on('connect', function() {
-                   socket.emit('initPad', {key: this.key});
-            });
+            this.socket.on('connect', this.socket.emit('initPad', {key: this.key}));
         }
         else{
             Ext.Msg.alert('Information', 'No valid key. Scan QrCode from <a href="'+urlClient+'">'+urlClient+'</a>');

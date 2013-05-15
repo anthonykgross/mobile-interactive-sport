@@ -12,7 +12,6 @@ Ext.define("Kctus.store.EventStore", {
             },
             load: function(){
                 Ext.Viewport.setMasked(false);
-                console.log('VIDEO STORE LOADED');   
             }
         },
         model: "Kctus.model.EventModel", 
