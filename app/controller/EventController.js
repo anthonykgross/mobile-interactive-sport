@@ -13,7 +13,7 @@ Ext.define("Kctus.controller.EventController", {
 
     videoGoTo: function(i){
         var eventStore = Ext.getStore('EventStore');
-        if(this.socket){
+        if(this.socket !== undefined){
             this.socket.emit('videoGoTo', {key: this.key, to: eventStore.getById(i).get('start')});
         }
     },
@@ -25,7 +25,7 @@ Ext.define("Kctus.controller.EventController", {
     init: function(){
         queryString = Ext.Object.fromQueryString(window.location.search.substring(1));
         this.key    = queryString.key;
-        this.socket = null;
+        this.socket = undefined;
         
         console.log(this.key);
         
