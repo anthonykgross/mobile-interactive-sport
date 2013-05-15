@@ -6933,3 +6933,11 @@ body.x-desktop {
   background-image: linear-gradient(top, #bababa, #c7c7c7 10%, #d3d3d3 65%, #d5d5d5);
   color: black;
 }
+
+
+.listevent img{
+    vertical-align: middle;
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+}

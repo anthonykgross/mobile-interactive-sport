@@ -1,4 +1,4 @@
-Ext.define("InteractiveSport.store.EventStore", {
+Ext.define("Kctus.store.EventStore", {
     extend: "Ext.data.Store",
     config: {
         autoLoad: true,
@@ -11,14 +11,14 @@ Ext.define("InteractiveSport.store.EventStore", {
                 Ext.Viewport.setMasked(true);
             },
             load: function(){
-                Ext.Viewport.setMasked(false); 
+                Ext.Viewport.setMasked(false);
                 console.log('VIDEO STORE LOADED');   
             }
         },
-        model: "InteractiveSport.model.EventModel", 
+        model: "Kctus.model.EventModel", 
         pageSize: 12,
         proxy: {
-            type: 'jsonp',
+            type: 'ajax',
             url: 'demo.json',
             extraParams: {
                 conditions: ''
