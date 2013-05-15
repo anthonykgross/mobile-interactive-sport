@@ -13,7 +13,9 @@ Ext.define("Kctus.controller.EventController", {
 
     videoGoTo: function(i){
         var eventStore = Ext.getStore('EventStore');
-        this.socket.emit('videoGoTo', {key: key, to: eventStore.getById(i).get('start')});
+        if(this.socket){
+            this.socket.emit('videoGoTo', {key: this.key, to: eventStore.getById(i).get('start')});
+        }
     },
             
     launch: function(){
@@ -21,13 +23,22 @@ Ext.define("Kctus.controller.EventController", {
     },
     
     init: function(){
-        console.log('VIDEO CONTROLLER INIT');
-        console.log(key);
-        this.socket = io.connect(serverio);
-        socket      = this.socket;
-        this.socket.on('connect', function() {
-               socket.emit('initPad', {key: key});
-        });
+        queryString = Ext.Object.fromQueryString(window.location.search.substring(1));
+        this.key    = queryString.key;
+        this.socket = null;
+        
+        console.log(this.key);
+        
+        if(this.key !== undefined){
+            this.socket = io.connect(serverio);
+            socket      = this.socket;
+            this.socket.on('connect', function() {
+                   socket.emit('initPad', {key: this.key});
+            });
+        }
+        else{
+            Ext.Msg.alert('Information', 'No valid key. Scan QrCode from <a href="'+urlClient+'">'+urlClient+'</a>');
+        }
     }
     
 });
