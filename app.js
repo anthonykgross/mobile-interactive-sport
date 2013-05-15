@@ -16,18 +16,19 @@
 //<debug>
 Ext.Loader.setPath({
     'Ext': 'touch/src',
-    'InteractiveSport': 'app'
+    'Kctus': 'app'
 });
 //</debug>
 
 Ext.application({
-    name: 'InteractiveSport',
+    name: 'Kctus',
 
     requires: [
         'Ext.MessageBox'
     ],
     models:['EventModel'],
     stores:['EventStore'],
+    controllers:['EventController'],
     views: [
         'Main',
         'EventListContainer',
@@ -55,13 +56,13 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-
+    
         var eventListContainer = {
             xtype: "eventlistcontainer"
         };
         
         //Initialize the main view
-        //Ext.Viewport.add(Ext.create('InteractiveSport.view.Main'));
+        //Ext.Viewport.add(Ext.create('Kctus.view.Main'));
         Ext.Viewport.add([eventListContainer]);
     }
 });

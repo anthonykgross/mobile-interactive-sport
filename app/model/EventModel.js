@@ -1,10 +1,13 @@
-Ext.define("InteractiveSport.model.EventModel", {
+Ext.define("Kctus.model.EventModel", {
     extend: "Ext.data.Model",
     config: {
-        idProperty: 'id',
+        idProperty: 'itemid',
         fields: [
-            { name: 'id', type: 'int' },
-            { name: 'text', type: 'string' }
+            { name: 'itemid', type: 'int' },
+            { name: 'titre', type: 'string' },
+            { name: 'start', type: 'int' },
+            { name: 'end', type: 'int' },
+            { name: 'has_tag', type: 'boolean' }
         ]
     }
 });

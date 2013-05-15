@@ -1,4 +1,4 @@
-Ext.define("InteractiveSport.view.EventListContainer", {
+Ext.define("Kctus.view.EventListContainer", {
     requires:['Ext.Toolbar'],
     extend: "Ext.Container",
     alias: "widget.eventlistcontainer",
@@ -13,23 +13,23 @@ Ext.define("InteractiveSport.view.EventListContainer", {
 
         this.callParent(arguments);
 
-        var videoList = {
+        var eventList = {
             xtype: "eventlist",
             id:"eventlist_panel",
             store: Ext.getStore("EventStore"),
             disableSelection:true,
             listeners: {
                 itemtap: {
-                    fn: this.tapVideoItem, 
+                    fn: this.videoGoTo, 
                     scope: this  
                 }
             }
         };
         
-        this.add([videoList]);
+        this.add([eventList]);
     },
 
-    tapVideoItem: function (list, record, target, index, evt, options) {
-        console.log('Event item tapped');
+    videoGoTo: function (list, record, target, index, evt, options) {
+        this.fireEvent("videoGoTo", record);
     }
 });

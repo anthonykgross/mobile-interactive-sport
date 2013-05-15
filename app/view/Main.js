@@ -1,4 +1,4 @@
-Ext.define('InteractiveSport.view.Main', {
+Ext.define('Kctus.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
     requires: [
